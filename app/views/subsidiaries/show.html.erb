@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @subsidiary.name %>
+</p>
+
+<p>
+  <strong>Legal name:</strong>
+  <%= @subsidiary.legal_name %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @subsidiary.document %>
+</p>
+
+<%= link_to 'Edit', edit_subsidiary_path(@subsidiary) %> |
+<%= link_to 'Back', subsidiaries_path %>
