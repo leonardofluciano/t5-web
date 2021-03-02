@@ -1,19 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
+<%= render 'shared/details/company', company: @company %>
 
-<p>
-  <strong>Legal name:</strong>
-  <%= @company.legal_name %>
-</p>
+<br>
+<h2>Company subsidiaries</h2>
 
-<p>
-  <strong>Document:</strong>
-  <%= @company.document %>
-</p>
+<%= render 'shared/tables/subsidiaries_table', subsidiaries: @company.subsidiaries %>
 
+<br>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
