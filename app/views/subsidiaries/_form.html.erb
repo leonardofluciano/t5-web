@@ -31,6 +31,14 @@
     <%= form.collection_select :company_id, Company.all, :id, :name %>
   </div>
 
+  <br>
+  <h2>Selecione os clientes</h2>
+
+  <div class="field">
+    <%= form.collection_check_boxes :customer_ids, Customer.all, :id, :name %>
+  </div>
+
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>

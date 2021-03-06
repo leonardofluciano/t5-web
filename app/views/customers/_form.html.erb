@@ -36,6 +36,14 @@
     <%= form.text_field :phone %>
   </div>
 
+  <br>
+  <h2>Selecione as filiais</h2>
+
+  <div class="field">
+    <%= form.collection_check_boxes :subsidiary_ids, Subsidiary.all, :id, :name %>
+  </div>
+
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>

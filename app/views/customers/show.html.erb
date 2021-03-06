@@ -25,5 +25,11 @@
   <%= @customer.phone %>
 </p>
 
+<br>
+<h2>Filiais da matriz</h2>
+
+<%= render 'shared/tables/subsidiaries_table', subsidiaries: @customer.subsidiaries %>
+
+<br>
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>

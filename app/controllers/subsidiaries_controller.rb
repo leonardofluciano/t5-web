@@ -64,6 +64,6 @@ class SubsidiariesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def subsidiary_params
-      params.require(:subsidiary).permit(:company_id, :name, :legal_name, :document)
+      params.require(:subsidiary).permit(:company_id, :name, :legal_name, :document, :customer_ids => [])
     end
 end

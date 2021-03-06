@@ -16,9 +16,14 @@
 </p>
 
 <br>
-<h2>Subsidiary company</h2>
+<h2>Matriz</h2>
 
 <%= render 'shared/details/company', company: @subsidiary.company %>
+
+<br>
+<h2>Clientes</h2>
+
+<%= render 'shared/tables/customers_table', customers: @subsidiary.customers %>
 
 <br>
 <%= link_to 'Edit', edit_subsidiary_path(@subsidiary) %> |
