@@ -1,0 +1,50 @@
+<%= form_with(model: customer) do |form| %>
+  <% if customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+        <% customer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :surname %>
+    <%= form.text_field :surname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :document %>
+    <%= form.text_field :document %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <br>
+  <h2>Selecione as filiais</h2>
+
+  <div class="field">
+    <%= form.collection_check_boxes :subsidiary_ids, Subsidiary.all, :id, :name %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
