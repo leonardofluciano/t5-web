@@ -26,7 +26,12 @@
 </p>
 
 <br>
-<h2>Filiais da matriz</h2>
+<h2>Conta</h2>
+
+<%= render 'shared/tables/accounts_table', accounts: @customer.account ? [ @customer.account ] : [] %>
+
+<br>
+<h2>Filiais</h2>
 
 <%= render 'shared/tables/subsidiaries_table', subsidiaries: @customer.subsidiaries %>
 
