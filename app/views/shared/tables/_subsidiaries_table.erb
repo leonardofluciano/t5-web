@@ -16,18 +16,20 @@
           <td><%= subsidiary.legal_name %></td>
           <td><%= subsidiary.document %></td>
           <td class="text-right">
-            <%= link_to subsidiary, class: 'mr-3' do %>
-              <i class="fas fa-plus text-primary" data-toggle="tooltip" data-placement="bottom" title="Details"></i>
-            <% end %>
+            <div class="d-flex flex-row justify-content-end">
+              <%= link_to subsidiary, class: 'mr-3' do %>
+                <i class="fas fa-plus text-primary" data-toggle="tooltip" data-placement="bottom" title="Details"></i>
+              <% end %>
 
-            <%= link_to edit_subsidiary_path(subsidiary), class: 'mr-3' do %>
-              <i class="fas fa-pen text-primary" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
-            <% end %>
+              <%= link_to edit_subsidiary_path(subsidiary), class: 'mr-3' do %>
+                <i class="fas fa-pen text-primary" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
+              <% end %>
 
-            <%= link_to subsidiary, method: :delete, data: { confirm: 'Are you sure?' }, class: 'mr-3' do %>
-              <i class="fas fa-trash text-danger" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
-            <% end %>
-          </td>
+              <%= link_to subsidiary, method: :delete, data: { confirm: 'Are you sure?' }, class: 'mr-3' do %>
+                <i class="fas fa-trash text-danger" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+              <% end %>
+            </td>
+          </div>  
         </tr>
       <% end %>
     </tbody>
