@@ -11,35 +11,54 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="card border-light bg-light rounded">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="field form-group">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :legal_name %>
-    <%= form.text_field :legal_name %>
-  </div>
+        <div class="col-12 col-md-6">
+          <div class="field form-group">
+            <%= form.label :legal_name %>
+            <%= form.text_field :legal_name, class: 'form-control' %>
+          </div>  
+        </div>
 
-  <div class="field">
-    <%= form.label :document %>
-    <%= form.text_field :document %>
-  </div>
+        <div class="col-12 col-md-6">
+          <div class="field form-group">
+            <%= form.label :document %>
+            <%= form.text_field :document, class: 'form-control' %>
+          </div>  
+        </div>
 
-  <div class="field">
-    <%= form.label :company_id %>
-    <%= form.collection_select :company_id, Company.all, :id, :name %>
-  </div>
+        <div class="col-12">
+          <div class="field form-group">
+            <%= form.label :company_id %>
+            <%= form.collection_select :company_id, Company.all, :id, :name, { include_blank: true }, { class: 'form-control' } %>
+          </div>
+        </div>
+      </div>
 
-  <br>
-  <h2>Select customers</h2>
+      <h4 class="text-secondary mt-4 mb-3">Select customers</h4>
 
-  <div class="field">
-    <%= form.collection_check_boxes :customer_ids, Customer.all, :id, :name %>
-  </div>
+      <div class="row">
+        <%= form.collection_check_boxes :customer_ids, Customer.all, :id, :name do |elem| %>
+          <div class="col-12 col-md-6">
+            <div class="checkbox-inline form-group ml-4">
+              <%= elem.check_box class: 'form-check-input' %>
+              <%= elem.label class: 'form-check-label' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
 
-  <br>
-  <div class="actions">
-    <%= form.submit %>
+      <div class="actions d-flex pt-2">
+        <%= form.submit submit_btn_text, class: 'btn btn-primary ml-auto' %>
+      </div>
+    </div>
   </div>
 <% end %>
