@@ -33,8 +33,14 @@
         <%= render 'shared/tables/companies_table', companies: [ @subsidiary.company ] %>
 
         <h4 class="text-secondary mt-5 mb-3">Customers</h4>
-
-        <%= render 'shared/tables/customers_table', customers: @subsidiary.customers %>
+        
+        <% if @subsidiary.customers.exists? %>
+          <%= render 'shared/tables/customers_table', customers: @subsidiary.customers %>
+        <% else %>
+          <div class="alert alert-dark" role="alert">
+            There are no customers
+          </div>
+        <% end %>
       </div>
     </div>
   <div>
