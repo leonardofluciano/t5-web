@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Subsidiaries</h1>
+<div class="d-flex flex-row mt-5 mb-2">
+  <h1 class="text-primary web-font-family-montserrat">Subsidiaries</h1>
+</div>
 
-<%= render 'shared/tables/subsidiaries_table', subsidiaries: @subsidiaries %>
-
-<br>
-<%= link_to 'New Subsidiary', new_subsidiary_path %>
+<div class="card border-light bg-light rounded">
+  <div class="card-body">
+    <%= render 'shared/tables/subsidiaries_table', subsidiaries: @subsidiaries %>
+  
+    <%= link_to 'New subsidiary', new_subsidiary_path, class: 'mt-1 btn btn-success w-100' %>
+  </div>
+</div>

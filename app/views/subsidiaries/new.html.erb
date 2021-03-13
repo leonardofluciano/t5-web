@@ -1,5 +1,5 @@
-<h1>New Subsidiary</h1>
+<div class="d-flex flex-row mt-5 mb-2">
+  <h1 class="text-primary web-font-family-montserrat">New subsidiary</h1>
+</div>
 
-<%= render 'form', subsidiary: @subsidiary %>
-
-<%= link_to 'Back', subsidiaries_path %>
+<%= render 'form', subsidiary: @subsidiary, submit_btn_text: 'Create subsidiary' %>
