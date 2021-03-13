@@ -1,5 +1,5 @@
-<h1>New Company</h1>
+<div class="d-flex flex-row mt-5 mb-2">
+  <h1 class="text-primary web-font-family-montserrat">New company</h1>
+</div>
 
-<%= render 'form', company: @company %>
-
-<%= link_to 'Back', companies_path %>
+<%= render 'form', company: @company, submit_btn_text: 'Create company' %>
