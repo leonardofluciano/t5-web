@@ -11,40 +11,61 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="card border-light bg-light rounded">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="field form-group">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :surname %>
-    <%= form.text_field :surname %>
-  </div>
+        <div class="col-12 col-md-6">
+          <div class="field form-group">
+            <%= form.label :surname %>
+            <%= form.text_field :surname, class: 'form-control' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :document %>
-    <%= form.text_field :document %>
-  </div>
+        <div class="col-12 col-md-6">
+          <div class="field form-group">
+            <%= form.label :document %>
+            <%= form.text_field :document, class: 'form-control' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+        <div class="col-12 col-md-6">
+          <div class="field form-group">
+            <%= form.label :phone %>
+            <%= form.text_field :phone, class: 'form-control' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
+        <div class="col-12">
+          <div class="field form-group">
+            <%= form.label :email %>
+            <%= form.text_field :email, class: 'form-control' %>
+          </div>                  
+        </div>
+      </div>
 
-  <br>
-  <h2>Select subsidiaries</h2>
+      <h4 class="text-secondary mt-4 mb-3">Select subsidiaries</h4>
 
-  <div class="field">
-    <%= form.collection_check_boxes :subsidiary_ids, Subsidiary.all, :id, :name %>
-  </div>
+      <div class="row">
+        <%= form.collection_check_boxes :subsidiary_ids, Subsidiary.all, :id, :name do |elem| %>
+          <div class="col-12 col-md-6">
+            <div class="checkbox-inline form-group ml-4">
+              <%= elem.check_box class: 'form-check-input' %>
+              <%= elem.label class: 'form-check-label' %>
+            </div>
+          </div>
+        <% end %>
+      </div>    
 
-  <br>
-  <div class="actions">
-    <%= form.submit %>
+      <div class="actions d-flex pt-2">
+        <%= form.submit submit_btn_text, class: 'btn btn-primary ml-auto' %>
+      </div>
+    </div>
   </div>
 <% end %>
