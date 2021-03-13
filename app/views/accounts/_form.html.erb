@@ -11,22 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number %>
-  </div>
+  <div class="card border-light bg-light rounded">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="field form-group">
+            <%= form.label :number %>
+            <%= form.text_field :number, class: 'form-control' %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= form.label :balance %>
-    <%= form.text_field :balance %>
-  </div>
+        <div class="col-12 col-md-6">
+          <div class="field form-group">
+            <%= form.label :balance %>
+            <%= form.text_field :balance, class: 'form-control' %>
+          </div>    
+        </div>
 
-  <div class="field">
-    <%= form.label :customer_id %>
-    <%= form.collection_select :customer_id, Customer.all, :id, :name %>
-  </div>
+        <div class="col-12">
+          <div class="field form-group">
+            <%= form.label :customer_id %>
+            <%= form.collection_select :customer_id, Customer.all, :id, :name, { include_blank: true }, { class: 'form-control' } %>
+          </div>
+        </div>
+      </div>
 
-  <div class="actions">
-    <%= form.submit %>
+      <div class="actions d-flex pt-2">
+        <%= form.submit submit_btn_text, class: 'btn btn-primary ml-auto' %>
+      </div>
+    </div>
   </div>
 <% end %>
