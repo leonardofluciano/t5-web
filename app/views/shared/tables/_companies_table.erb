@@ -1,23 +1,37 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Legal name</th>
-      <th>Document</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% companies.each do |company| %>
+<div class="table-responsive rounded">
+  <table class="table table-dark rounded mb-0">
+    <thead>
       <tr>
-        <td><%= company.name %></td>
-        <td><%= company.legal_name %></td>
-        <td><%= company.document %></td>
-        <td><%= link_to 'Show', company %></td>
-        <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Legal name</th>
+        <th>Document</th>
+        <th colspan="1"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% companies.each do |company| %>
+        <tr>
+          <td><%= company.name %></td>
+          <td><%= company.legal_name %></td>
+          <td><%= company.document %></td>
+          <td class="text-right">
+            <div class="d-flex flex-row justify-content-end">
+              <%= link_to company, class: 'mr-3' do %>
+                <i class="fas fa-plus text-primary" data-toggle="tooltip" data-placement="bottom" title="Details"></i>
+              <% end %>
+
+              <%= link_to edit_company_path(company), class: 'mr-3' do %>
+                <i class="fas fa-pen text-primary" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
+              <% end %>
+
+              <%= link_to company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'mr-3' do %>
+                <i class="fas fa-trash text-danger" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
