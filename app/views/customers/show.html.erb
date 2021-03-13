@@ -1,40 +1,57 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @customer.name %>
-</p>
+<div class="d-flex flex-row mt-5 mb-2">
+  <h1 class="text-primary web-font-family-montserrat">Customer</h1>
+  <%= link_to 'Edit customer', edit_customer_path(@customer), class: 'btn btn-success my-2 ml-auto' %>
+</div>
 
-<p>
-  <strong>Surname:</strong>
-  <%= @customer.surname %>
-</p>
+<div class="card border-light bg-light rounded">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-4 col-lg-3 pr-5 pb-3 pb-md-0 web-border-bottom web-border-md-bottom-0 web-border-md-right">
+        <h4 class="text-secondary mb-3">Details</h4>
 
-<p>
-  <strong>Document:</strong>
-  <%= @customer.document %>
-</p>
+        <p>
+          <strong>Name:</strong>
+          <%= @customer.name %>
+        </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @customer.email %>
-</p>
+        <p>
+          <strong>Surname:</strong>
+          <%= @customer.surname %>
+        </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @customer.phone %>
-</p>
+        <p>
+          <strong>Document:</strong>
+          <%= @customer.document %>
+        </p>
 
-<br>
-<h2>Account</h2>
+        <p>
+          <strong>Email:</strong>
+          <%= @customer.email %>
+        </p>
 
-<%= render 'shared/tables/accounts_table', accounts: @customer.account ? [ @customer.account ] : [] %>
+        <p>
+          <strong>Phone:</strong>
+          <%= @customer.phone %>
+        </p> 
+      </div>
 
-<br>
-<h2>Subsidiaries</h2>
+      <div class="col-12 col-md-8 col-lg-9 px-md-5">
+        <h4 class="text-secondary mt-4 mt-md-0 mb-3">Accounts</h4>
 
-<%= render 'shared/tables/subsidiaries_table', subsidiaries: @customer.subsidiaries %>
+        <%= render 'shared/tables/accounts_table', accounts: @customer.account ? [ @customer.account ] : [] %>
 
-<br>
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+        <h4 class="text-secondary mt-5 mb-3">Subsidiaries</h4>
+        
+        <% if @customer.subsidiaries.exists? %>
+          <%= render 'shared/tables/subsidiaries_table', subsidiaries: @customer.subsidiaries %>
+        <% else %>
+          <div class="alert alert-dark" role="alert">
+            There are no subsidiaries
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
