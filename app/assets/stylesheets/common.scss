@@ -2,3 +2,17 @@
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
 }
+
+.web-border-bottom {
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+@media (min-width: 768px) {
+    .web-border-md-right {
+        border-right: 1px solid #dee2e6 !important;
+    }
+
+    .web-border-md-bottom-0 {
+        border-bottom: none !important;
+    }
+}
