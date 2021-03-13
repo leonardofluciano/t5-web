@@ -1,20 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Number:</strong>
-  <%= @account.number %>
-</p>
+<div class="d-flex flex-row mt-5 mb-2">
+  <h1 class="text-primary web-font-family-montserrat">Account</h1>
+  <%= link_to 'Edit account', edit_account_path(@account), class: 'btn btn-success my-2 ml-auto' %>
+</div>
 
-<p>
-  <strong>Balance:</strong>
-  <%= @account.balance %>
-</p>
+<div class="card border-light bg-light rounded">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-4 col-lg-3 pr-5 pb-3 pb-md-0 web-border-bottom web-border-md-bottom-0 web-border-md-right">
+        <h4 class="text-secondary mb-3">Details</h4>
 
-<br>
-<h2>Customer</h2>
+        <p>
+          <strong>Number:</strong>
+          <%= @account.number %>
+        </p>
 
-<%= render 'shared/tables/customers_table', customers: [ @account.customer ] %>
+        <p>
+          <strong>Balance:</strong>
+          <%= @account.balance %>
+        </p>
+      </div>
 
-<br>
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+      <div class="col-12 col-md-8 col-lg-9 px-md-5">
+        <h4 class="text-secondary mt-4 mt-md-0 mb-3">Customer</h4>
+
+        <%= render 'shared/tables/customers_table', customers: [ @account.customer ] %>
+      </div>
+    </div>
+  </div>
+</div>
