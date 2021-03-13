@@ -40,7 +40,13 @@
       <div class="col-12 col-md-8 col-lg-9 px-md-5">
         <h4 class="text-secondary mt-4 mt-md-0 mb-3">Accounts</h4>
 
-        <%= render 'shared/tables/accounts_table', accounts: @customer.account ? [ @customer.account ] : [] %>
+        <% if @customer.account %>
+          <%= render 'shared/tables/accounts_table', accounts: @customer.account ? [ @customer.account ] : [] %>
+        <% else %>
+          <div class="alert alert-dark" role="alert">
+            There is no account
+          </div>
+        <% end %>
 
         <h4 class="text-secondary mt-5 mb-3">Subsidiaries</h4>
         
