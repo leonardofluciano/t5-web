@@ -27,14 +27,12 @@ class DocumentValidator < ActiveModel::EachValidator
 
         digitSum1 = 0
         cnpjArray.slice(0, 12).reverse().each_with_index do |item, index|
-            puts (item.to_i)
-            puts (((index.to_i % 8) + 2))
-            puts ('######')
             digitSum1 += item.to_i * ((index.to_i % 8) + 2)
         end
 
-        mod1 = digitSum1 % 11
-        if (mod1 != 0 && mod1 != 1 && 11 - (digitSum1 % 11) != cnpjArray[12].to_i)
+        mod1   = digitSum1 % 11
+        digit1 = mod1 == 0 || mod1 == 1 ? 0 : 11 - mod1
+        if (digit1 != cnpjArray[12].to_i)
             return false
         end
 
@@ -43,8 +41,9 @@ class DocumentValidator < ActiveModel::EachValidator
             digitSum2 += item.to_i * ((index.to_i % 8) + 2)
         end
 
-        mod2 = digitSum2 % 11
-        if (mod2 != 0 && mod2 != 1 && 11 - (digitSum2 % 11) != cnpjArray[13].to_i)
+        mod2   = digitSum2 % 11
+        digit2 = mod2 == 0 || mod2 == 1 ? 0 : 11 - mod2
+        if (digit2 != cnpjArray[13].to_i)
             return false
         end
 
