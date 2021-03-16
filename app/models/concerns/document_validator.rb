@@ -1,11 +1,71 @@
 class DocumentValidator < ActiveModel::EachValidator
     def validate_each record, attribute, value
+        type = options.key? :type ? options[:type] : 'any'
+
+        if (type == 'any' && !self.validateCpf(value) && !self.validateCnpj(value))
+            record.errors.add attribute, 'must be a valid document number'
+            return
+        end
+
+        if (type == 'cpf' && !self.validateCpf(value))
+            record.errors.add attribute, 'must be a valid cpf number'
+            return
+        end
+
+        if (type == 'cnpj' && !self.validateCnpj(value))
+            record.errors.add attribute, 'must be a valid cnpj number'
+            return
+        end
+
         if (!(self.validateCnpj value))
             record.errors.add attribute, 'must be a valid document number'
         end
     end
 
     private
+
+    def validateCpf  cpf
+        if (
+            cpf == '00000000000' ||
+            cpf == '11111111111' ||
+            cpf == '22222222222' ||
+            cpf == '33333333333' ||
+            cpf == '44444444444' ||
+            cpf == '55555555555' ||
+            cpf == '66666666666' ||
+            cpf == '77777777777' ||
+            cpf == '88888888888' ||
+            cpf == '99999999999'
+        )
+            return false
+        end
+
+        cpfArray = cpf.split ''
+
+        digitSum1 = 0
+        cpfArray.slice(0, 9).each_with_index do |item, index|
+            digitSum1 += item.to_i * (10 - index.to_i)
+        end
+
+        mod1   = digitSum1 % 11
+        digit1 = mod1 == 10 ? 0 : mod1
+        if (digit1 != cpfArray[9].to_i)
+            return false
+        end
+
+        digitSum2 = 0
+        cpfArray.slice(0, 10).each_with_index do |item, index|
+            digitSum2 += item.to_i * (11 - index.to_i)
+        end
+
+        mod2   = digitSum2 % 11
+        digit2 = mod2 == 10 ? 0 : mod2
+        if (digit2 != cpfArray[10].to_i)
+            return false
+        end
+
+        return true
+    end
 
     def validateCnpj cnpj
         if (
