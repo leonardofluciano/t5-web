@@ -24,7 +24,11 @@ class DocumentValidator < ActiveModel::EachValidator
 
     private
 
-    def validateCpf  cpf
+    def validateCpf cpf
+        if (cpf.length != 11)
+            return false
+        end
+
         if (
             cpf == '00000000000' ||
             cpf == '11111111111' ||
@@ -68,6 +72,10 @@ class DocumentValidator < ActiveModel::EachValidator
     end
 
     def validateCnpj cnpj
+        if (cnpj.length != 14)
+            return false
+        end
+
         if (
             cnpj == '00000000000000' ||
             cnpj == '11111111111111' ||
