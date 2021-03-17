@@ -1,9 +1,9 @@
 class CreateCompanies < ActiveRecord::Migration[6.1]
   def change
     create_table :companies do |t|
-      t.string :name, limit: 191
-      t.string :legal_name, limit: 191
-      t.string :document, limit: 13
+      t.string :name
+      t.string :legal_name
+      t.string :document
 
       t.timestamps
     end

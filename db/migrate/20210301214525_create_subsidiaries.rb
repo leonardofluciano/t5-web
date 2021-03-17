@@ -1,9 +1,9 @@
 class CreateSubsidiaries < ActiveRecord::Migration[6.1]
   def change
     create_table :subsidiaries do |t|
-      t.string :name, limit: 191
-      t.string :legal_name, limit: 191
-      t.string :document, limit: 13
+      t.string :name
+      t.string :legal_name
+      t.string :document
       t.belongs_to :company, foreign_key: true
 
       t.timestamps

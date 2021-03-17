@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_03_06_180503) do
 
   create_table "accounts", force: :cascade do |t|
-    t.string "number", limit: 191
+    t.string "number"
     t.float "balance"
     t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
@@ -22,19 +22,19 @@ ActiveRecord::Schema.define(version: 2021_03_06_180503) do
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string "name", limit: 191
-    t.string "legal_name", limit: 191
-    t.string "document", limit: 13
+    t.string "name"
+    t.string "legal_name"
+    t.string "document"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string "name", limit: 191
-    t.string "surname", limit: 191
-    t.string "document", limit: 11
-    t.string "email", limit: 191
-    t.string "phone", limit: 14
+    t.string "name"
+    t.string "surname"
+    t.string "document"
+    t.string "email"
+    t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 2021_03_06_180503) do
   end
 
   create_table "subsidiaries", force: :cascade do |t|
-    t.string "name", limit: 191
-    t.string "legal_name", limit: 191
-    t.string "document", limit: 13
+    t.string "name"
+    t.string "legal_name"
+    t.string "document"
     t.integer "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
