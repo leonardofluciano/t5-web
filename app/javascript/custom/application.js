@@ -1,5 +1,9 @@
 import Inputmask from "inputmask"
 
-$(document).ready(function() {
+Inputmask.extendDefaults({
+    removeMaskOnSubmit: true,
+})
+
+document.addEventListener("turbolinks:load", function() {
     Inputmask().mask(document.querySelectorAll('input'))
 })
