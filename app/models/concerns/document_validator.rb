@@ -1,6 +1,12 @@
 class DocumentValidator < ActiveModel::EachValidator
     def validate_each record, attribute, value
-        type = options.key? :type ? options[:type] : 'any'
+        type = if options.key? :type then options[:type] else 'any' end
+
+        availableTypes = ['any', 'cpf', 'cnpj']
+        if (!availableTypes.include?(type))
+            record.errors.add attribute, 'must be a valid document number'
+            return
+        end
 
         if (type == 'any' && !self.validateCpf(value) && !self.validateCnpj(value))
             record.errors.add attribute, 'must be a valid document number'
@@ -16,15 +22,13 @@ class DocumentValidator < ActiveModel::EachValidator
             record.errors.add attribute, 'must be a valid cnpj number'
             return
         end
-
-        if (!(self.validateCnpj value))
-            record.errors.add attribute, 'must be a valid document number'
-        end
     end
 
     private
 
     def validateCpf cpf
+        puts cpf
+
         if (cpf.length != 11)
             return false
         end
@@ -51,8 +55,8 @@ class DocumentValidator < ActiveModel::EachValidator
             digitSum1 += item.to_i * (10 - index.to_i)
         end
 
-        mod1   = digitSum1 % 11
-        digit1 = mod1 == 10 ? 0 : mod1
+        mod1   = (digitSum1 * 10) % 11
+        digit1 = mod1 == 10 || mod1 == 11 ? 0 : mod1
         if (digit1 != cpfArray[9].to_i)
             return false
         end
@@ -62,8 +66,8 @@ class DocumentValidator < ActiveModel::EachValidator
             digitSum2 += item.to_i * (11 - index.to_i)
         end
 
-        mod2   = digitSum2 % 11
-        digit2 = mod2 == 10 ? 0 : mod2
+        mod2   = (digitSum2 * 10) % 11
+        digit2 = mod2 == 10 || mod2 == 11 ? 0 : mod2
         if (digit2 != cpfArray[10].to_i)
             return false
         end
