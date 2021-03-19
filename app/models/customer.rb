@@ -6,5 +6,5 @@ class Customer < ApplicationRecord
     validates :surname, length: { maximum: 191 }, presence: true
     validates :document, length: { is: 11 }, document: { type: 'cpf' }, uniqueness: true
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, length: { maximum: 191 }
-    validates :phone, length: { is: 9 }
+    validates :phone, length: { is: 11 }
 end
