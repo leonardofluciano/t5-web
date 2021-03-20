@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2021_03_06_180503) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "accounts", force: :cascade do |t|
     t.string "number"
     t.float "balance"
-    t.integer "customer_id"
+    t.bigint "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_accounts_on_customer_id"
@@ -40,8 +43,8 @@ ActiveRecord::Schema.define(version: 2021_03_06_180503) do
   end
 
   create_table "customers_subsidiaries", id: false, force: :cascade do |t|
-    t.integer "subsidiary_id", null: false
-    t.integer "customer_id", null: false
+    t.bigint "subsidiary_id", null: false
+    t.bigint "customer_id", null: false
     t.index ["subsidiary_id", "customer_id"], name: "index_customers_subsidiaries_on_subsidiary_id_and_customer_id"
   end
 
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_03_06_180503) do
     t.string "name"
     t.string "legal_name"
     t.string "document"
-    t.integer "company_id"
+    t.bigint "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_subsidiaries_on_company_id"
