@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<div class="d-flex flex-row mt-5 mb-2">
+  <h1 class="text-primary web-font-family-montserrat">Customers</h1>
+</div>
+
+<div class="card border-light bg-light rounded">
+  <div class="card-body">
+    <%= render 'shared/tables/customers_table', customers: @customers %>
+  
+    <%= link_to 'New Customer', new_customer_path, class: 'mt-1 btn btn-success w-100' %>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<%= form_with(model: company) do |form| %>
+  <% if company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+        <% company.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card border-light bg-light rounded">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="field form-group">
+            <%= form.label :name %>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>  
+        </div>
+
+        <div class="col-12 col-md-6">
+          <div class="field form-group">
+            <%= form.label :legal_name %>
+            <%= form.text_field :legal_name, class: 'form-control' %>
+          </div>        
+        </div>
+
+        <div class="col-12 col-md-6">
+          <div class="field form-group">
+            <%= form.label :document %>
+            <%= form.text_field :document, class: 'form-control', 'data-inputmask': "'mask': '99.999.999/9999-99'" %>
+          </div>        
+        </div>
+      </div>
+      
+      <div class="actions d-flex pt-2">
+        <%= form.submit submit_btn_text, class: 'btn btn-primary ml-auto' %>
+      </div>
+    </div>
+  </div>
+<% end %>

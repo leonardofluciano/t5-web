@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<div class="d-flex flex-row mt-5 mb-2">
+  <h1 class="text-primary web-font-family-montserrat">Company</h1>
+  <%= link_to 'Edit company', edit_company_path(@company), class: 'btn btn-success my-2 ml-auto' %>
+</div>
+
+<div class="card border-light bg-light rounded">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-4 col-lg-3 pr-5 pb-3 pb-md-0 web-border-bottom web-border-md-bottom-0 web-border-md-right">
+        <h4 class="text-secondary mb-3">Details</h4>  
+
+        <p>
+          <strong>Name:</strong>
+          <%= @company.name %>
+        </p>
+
+        <p>
+          <strong>Legal name:</strong>
+          <%= @company.legal_name %>
+        </p>
+
+        <p>
+          <strong>Document:</strong>
+          <%= @company.document %>
+        </p>  
+      </div>
+
+      <div class="col-12 col-md-8 col-lg-9 px-md-5">
+        <h4 class="text-secondary mt-4 mt-md-0 mb-3">Subsidiaries</h4>
+
+        <% if @company.subsidiaries.exists? %>
+          <%= render 'shared/tables/subsidiaries_table', subsidiaries: @company.subsidiaries %>
+        <% else %>
+          <div class="alert alert-dark" role="alert">
+            There are no subsidiaries
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
