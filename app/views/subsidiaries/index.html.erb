@@ -6,7 +6,7 @@
 
 <div class="card border-light bg-light rounded">
   <div class="card-body">
-    <%= render 'shared/tables/subsidiaries_table', subsidiaries: @subsidiaries %>
+    <%= render 'shared/tables/subsidiaries_table', subsidiaries: @subsidiaries.to_a %>
   
     <%= link_to 'New subsidiary', new_subsidiary_path, class: 'mt-1 btn btn-success w-100' %>
   </div>
