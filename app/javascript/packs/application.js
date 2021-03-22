@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
 import "@fortawesome/fontawesome-free/css/all"
+import 'fonts/font-faces'
 import "stylesheets/application"
 
 // Custom js
