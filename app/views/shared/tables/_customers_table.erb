@@ -1,41 +1,47 @@
 <div class="table-responsive rounded">
-  <table class="table table-dark rounded mb-0">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Document</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% customers.each do |customer| %>
+  <% if !customers.empty? %>
+    <table class="table table-dark rounded mb-0">
+      <thead>
         <tr>
-          <td><%= customer.name %></td>
-          <td><%= customer.surname %></td>
-          <td><%= customer.document %></td>
-          <td><%= customer.email %></td>
-          <td><%= customer.phone %></td>
-          <td>
-            <div class="d-flex flex-row justify-content-end">
-              <%= link_to customer, class: 'mr-3' do %>
-                <i class="fas fa-plus text-primary" data-toggle="tooltip" data-placement="bottom" title="Details"></i>
-              <% end %>
-
-              <%= link_to edit_customer_path(customer), class: 'mr-3' do %>
-                <i class="fas fa-pen text-primary" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
-              <% end %>
-
-              <%= link_to customer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'mr-3' do %>
-                <i class="fas fa-trash text-danger" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
-              <% end %>
-            </div>
-          </td>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Document</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% customers.each do |customer| %>
+          <tr>
+            <td><%= customer.name %></td>
+            <td><%= customer.surname %></td>
+            <td><%= customer.document %></td>
+            <td><%= customer.email %></td>
+            <td><%= customer.phone %></td>
+            <td>
+              <div class="d-flex flex-row justify-content-end">
+                <%= link_to customer, class: 'mr-3' do %>
+                  <i class="fas fa-plus text-primary" data-toggle="tooltip" data-placement="bottom" title="Details"></i>
+                <% end %>
+
+                <%= link_to edit_customer_path(customer), class: 'mr-3' do %>
+                  <i class="fas fa-pen text-primary" data-toggle="tooltip" data-placement="bottom" title="Edit"></i>
+                <% end %>
+
+                <%= link_to customer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'mr-3' do %>
+                  <i class="fas fa-trash text-danger" data-toggle="tooltip" data-placement="bottom" title="Delete"></i>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <div class="alert alert-dark" role="alert">
+        No companies
+      </div>
+    <% end %>
 </div>
