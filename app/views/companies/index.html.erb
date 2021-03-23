@@ -6,7 +6,7 @@
 
 <div class="card border-light bg-light rounded">
   <div class="card-body">
-    <%= render 'shared/tables/companies_table', companies: @companies %>
+    <%= render 'shared/tables/companies_table', companies: @companies.to_a %>
 
     <%= link_to 'New company', new_company_path, class: 'mt-1 btn btn-success w-100' %>
   </div>

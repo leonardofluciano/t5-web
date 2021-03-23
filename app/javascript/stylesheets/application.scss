@@ -1,6 +1,6 @@
-@import "~bootstrap/scss/bootstrap";
+@import "./custom/bootstrap-theme.scss";
+@import "bootstrap/scss/bootstrap";
 @import '@fortawesome/fontawesome-free';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap');
 
 body {
     font-family: 'IBM Plex Sans', sans-serif !important;
@@ -8,4 +8,36 @@ body {
 
 .web-font-family-montserrat {
     font-family: 'Montserrat', sans-serif;
+}
+
+.web-border-top-radius-0 {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.web-border-bottom {
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+@media (min-width: 768px) {
+    .web-border-md-right {
+        border-right: 1px solid #dee2e6 !important;
+    }
+
+    .web-border-md-bottom-0 {
+        border-bottom: none !important;
+    }
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.web-nav-item:hover a:not(.web-nav-link-active) {
+    color: $primary !important;
+    background: $light !important;
+}
+
+.web-home-link:hover .web-home-link-text, .web-home-link:hover .web-home-link-icon {
+    color: $primary !important;
 }
