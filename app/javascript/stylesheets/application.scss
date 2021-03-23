@@ -33,6 +33,11 @@ a:hover {
     text-decoration: none;
 }
 
+.web-nav-item:hover a:not(.web-nav-link-active) {
+    color: $primary !important;
+    background: $light !important;
+}
+
 .web-home-link:hover .web-home-link-text, .web-home-link:hover .web-home-link-icon {
     color: $primary !important;
 }
