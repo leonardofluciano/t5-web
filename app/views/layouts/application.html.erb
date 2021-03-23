@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>T5Web</title>
+    <title><%= yield(:title).presence || 'T5Web'%></title>
+
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Simple CRUDs study project">
+    <meta name="keywords" content="CRUDs, Company, Subsidiary, Customer, Account">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
